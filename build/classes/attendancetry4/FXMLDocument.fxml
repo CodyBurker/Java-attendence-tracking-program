@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.validation.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" minWidth="500.0" prefHeight="773.0" prefWidth="725.0" style="-fx-background-color: #009688;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendancetry4.FXMLDocumentController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Region maxHeight="34.0" minHeight="20.0" onMouseDragged="#titleBarDragged" onMouseMoved="#titleBarClicked" prefHeight="34.0" prefWidth="725.0" style="-fx-background-color: #00796B;" />
+            <JFXTabPane fx:id="pane" prefHeight="137.0" prefWidth="633.0" style=".tab-header-background-fx-backbround-color: #00796B;" stylesheets="@CustomCSS.css" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+               <tabs>
+                <Tab closable="false" text="Sign-In">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #00796B;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <GridPane alignment="CENTER">
+                                      <columnConstraints>
+                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="120.0" prefHeight="120.0" valignment="CENTER" vgrow="ALWAYS" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label text="Welcome!">
+                                             <font>
+                                                <Font size="42.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="157.0" fitWidth="254.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                                             <image>
+                                                <Image url="@MLH-Logo.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </GridPane>
+                                    <HBox alignment="CENTER" prefHeight="40.0" prefWidth="544.0" style="-fx-background-color: #009688;" VBox.vgrow="NEVER">
+                                       <children>
+                                          <Label text="Enter Name Here:" textFill="WHITE">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <TextField fx:id="nameField" alignment="CENTER" maxWidth="300.0" minWidth="200.0" prefHeight="29.0" prefWidth="367.0" promptText="First and Last Name..." style="-fx-background-color: #D32F2F; -fx-text-fill: white; -fx-prompt-text-fill: white;" HBox.hgrow="SOMETIMES">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="20.0" right="20.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <JFXButton onAction="#clearForm" prefHeight="24.0" prefWidth="30.0" style="-fx-background-color: #D32F2F; -fx-text-fill: white;" text="X" textOverrun="CLIP">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <GridPane alignment="TOP_CENTER" prefHeight="203.0" prefWidth="626.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="40.0" percentHeight="10.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="30.0" percentHeight="90.0" prefHeight="200.0" vgrow="ALWAYS" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="229.0" text="Select Class:" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" prefHeight="31.0" prefWidth="236.0" text="Select Professor:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                          </Label>
+                                          <ListView fx:id="classListView" editable="true" onKeyTyped="#onKeyPress" prefHeight="100.0" prefWidth="280.0" style="-fx-background-color: #009688;" stylesheets="@TableStyleSheet.css" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin></ListView>
+                                          <ListView fx:id="profListView" prefHeight="106.0" prefWidth="320.0" style="-fx-background-color: #009688;" stylesheets="@TableStyleSheet.css" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin></ListView>
+                                       </children>
+                                    </GridPane>
+                                    <JFXButton fx:id="signinBtn" buttonType="RAISED" defaultButton="true" onAction="#handleButtonAction" prefHeight="41.0" prefWidth="494.0" ripplerFill="#fbff80" style="-fx-background-color: #D32F2F;" text="Sign In" textFill="WHITE">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </JFXButton>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <VBox alignment="CENTER" prefHeight="27.0" prefWidth="633.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Label fx:id="feedbackLabel" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="30.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="3.0" top="3.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label fx:id="counterText2" alignment="CENTER" prefHeight="38.0" prefWidth="560.0" text="No students signed in yet." textAlignment="CENTER">
+                                                   <font>
+                                                      <Font size="22.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab closable="false" text="Review &amp; Save">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <SplitPane dividerPositions="0.8282647584973166" layoutX="66.0" layoutY="26.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                       <children>
+                                          <ListView fx:id="studentList" layoutX="139.0" layoutY="62.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #009688;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <contextMenu>
+                                                <ContextMenu>
+                                                  <items>
+                                                    <MenuItem mnemonicParsing="false" onAction="#deleteItem" text="Delete Student" />
+                                                  </items>
+                                                </ContextMenu>
+                                             </contextMenu></ListView>
+                                       </children>
+                                    </AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                       <children>
+                                          <Pane layoutX="76.0" layoutY="13.0" prefHeight="262.0" prefWidth="631.0" style="-fx-background-color: #00796B;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <JFXButton fx:id="delete" layoutX="417.0" layoutY="52.0" onAction="#deleteItem" prefHeight="27.0" prefWidth="200.0" style="-fx-background-color: #D32F2F;" text="Delete Selected" textFill="WHITE" />
+                                                <JFXButton layoutX="14.0" layoutY="52.0" onAction="#saveList" prefHeight="27.0" prefWidth="200.0" style="-fx-background-color: #D32F2F;" text="Save List" textFill="WHITE" />
+                                                <Label fx:id="counterText" layoutX="36.0" layoutY="14.0" prefHeight="38.0" prefWidth="560.0" text="No students signed in yet." textFill="WHITE">
+                                                   <font>
+                                                      <Font size="31.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </AnchorPane>
+                                </items>
+                              </SplitPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab closable="false" text="Edit Classes and Profes">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <GridPane layoutX="94.0" layoutY="151.0" style="-fx-background-color: #00796B;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints minHeight="10.0" percentHeight="5.0" prefHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="30.0" percentHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                                  <RowConstraints minHeight="10.0" percentHeight="11.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <ListView fx:id="editClassListView" editable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #009688;" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </GridPane.margin>
+                                       <contextMenu>
+                                          <ContextMenu>
+                                            <items>
+                                              <MenuItem mnemonicParsing="false" text="Move Up" />
+                                                <MenuItem mnemonicParsing="false" text="Down" />
+                                            </items>
+                                          </ContextMenu>
+                                       </contextMenu>
+                                    </ListView>
+                                    <ListView fx:id="editProfListView" editable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #009688;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </ListView>
+                                    <VBox alignment="CENTER" prefHeight="115.0" prefWidth="317.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                       <children>
+                                          <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <TextField fx:id="addClassTextField" HBox.hgrow="ALWAYS">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </HBox.margin></TextField>
+                                             </children>
+                                             <padding>
+                                                <Insets top="10.0" />
+                                             </padding>
+                                          </HBox>
+                                          <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <JFXButton buttonType="RAISED" onAction="#addClass" style="-fx-background-color: #D32F2F;" text="Add">
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" top="10.0" />
+                                                   </HBox.margin></JFXButton>
+                                                <JFXButton buttonType="RAISED" onAction="#deleteClass" prefHeight="27.0" prefWidth="90.0" style="-fx-background-color: #D32F2F;" text="Delete" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                   <HBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </HBox.margin>
+                                                </JFXButton>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="115.0" prefWidth="317.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                       <children>
+                                          <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <TextField fx:id="addProfTextField" HBox.hgrow="ALWAYS">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </HBox.margin></TextField>
+                                             </children>
+                                             <padding>
+                                                <Insets top="10.0" />
+                                             </padding>
+                                          </HBox>
+                                          <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <JFXButton buttonType="RAISED" onAction="#addProf" style="-fx-background-color: #D32F2F;" text="Add">
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </HBox.margin>
+                                                </JFXButton>
+                                                <JFXButton buttonType="RAISED" onAction="#deleteProf" prefHeight="27.0" prefWidth="90.0" style="-fx-background-color: #D32F2F;" text="Delete" textFill="WHITE" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding>
+                                    </VBox>
+                                    <Label text="Classes" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label text="Professors" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="                                                    Exit">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox alignment="CENTER" layoutX="255.0" layoutY="159.0" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #009688;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label text="Are you sure you want to exit?" textFill="WHITE">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font size="34.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXButton cancelButton="true" onAction="#canceledExit" prefHeight="27.0" prefWidth="189.0" style="-fx-background-color: #00796B;" text="Cancel" textFill="WHITE">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font size="27.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton onAction="#confirmedExit" prefHeight="27.0" prefWidth="186.0" style="-fx-background-color: #D32F2F;" text="Exit">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font size="27.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </VBox>
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+               </tabs>
+            </JFXTabPane>
+         </children>
+      </VBox>
+      <JFXButton buttonType="RAISED" onAction="#exitForm" prefHeight="23.0" prefWidth="33.0" style="-fx-background-color: #D32F2F;" text="  X " textAlignment="RIGHT" textFill="WHITE" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="3.0">
+         <padding>
+            <Insets right="5.0" />
+         </padding>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
