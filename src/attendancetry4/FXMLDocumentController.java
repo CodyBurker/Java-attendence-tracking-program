@@ -20,12 +20,14 @@ import javafx.scene.control.*;
 import javafx.scene.control.TableColumn;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -120,6 +122,10 @@ public class FXMLDocumentController implements Initializable {
             classListView.getSelectionModel().clearSelection();
         } // If not good, then do this.
         else {
+           Alert alert = new Alert(AlertType.WARNING, "Please enter name, professor, and class.", ButtonType.OK);
+           alert.titleProperty().setValue("Enter name, professor, and class."); 
+           alert.headerTextProperty().setValue("Enter name, professor, and class.");
+           alert.showAndWait();
             feedbackLabel.setStyle("-fx-background-color: #D32F2F");
             feedbackLabel.setText("Please enter name, profe, and class.");
         }
